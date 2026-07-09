@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bh235gefmgs3h"]
+
+[ext_resource type="Script" uid="uid://ddyjl8l0j1qo5" path="res://scripts/spiral_stairs.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stone"]
+albedo_color = Color(0.55, 0.55, 0.58, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_roof"]
+top_radius = 0.0
+bottom_radius = 4.6
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roof"]
+albedo_color = Color(0.5, 0.22, 0.18, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_roof"]
+size = Vector3(9.2, 4, 9.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_platform"]
+top_radius = 3.6
+bottom_radius = 3.6
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_platform"]
+height = 0.2
+radius = 3.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tread"]
+albedo_color = Color(0.4, 0.25, 0.12, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_doorleaf"]
+size = Vector3(1.5, 2.4, 0.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_doorleaf"]
+size = Vector3(1.5, 2.4, 0.08)
+
+[node name="Tower" type="Node3D" unique_id=681954891]
+
+[node name="WallsCSG" type="CSGCylinder3D" parent="." unique_id=378701336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+use_collision = true
+radius = 4.0
+height = 10.0
+sides = 16
+material = SubResource("StandardMaterial3D_stone")
+
+[node name="Inner" type="CSGCylinder3D" parent="WallsCSG" unique_id=874541250]
+operation = 2
+radius = 3.6
+height = 10.4
+sides = 16
+
+[node name="DoorCut" type="CSGBox3D" parent="WallsCSG" unique_id=776173220]
+transform = Transform3D(1, 0, 0, 0, 0.99765754, -0.06840666, 0, 0.06840666, 0.99765754, 0, -3.609, -3.7)
+operation = 2
+size = Vector3(1.6, 2.6, 0.8)
+
+[node name="WindowXPos" type="CSGBox3D" parent="WallsCSG" unique_id=1566202136]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.720161, -0.5, 0)
+operation = 2
+size = Vector3(0.9, 1, 0.6)
+
+[node name="WindowXNeg" type="CSGBox3D" parent="WallsCSG" unique_id=1225125046]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.750588, -0.5, 0)
+operation = 2
+size = Vector3(0.9, 1, 0.6)
+
+[node name="WindowZPos" type="CSGBox3D" parent="WallsCSG" unique_id=2013007187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 3.7726417)
+operation = 2
+size = Vector3(0.9, 1, 0.6)
+
+[node name="RoofBody" type="StaticBody3D" parent="." unique_id=2034690049]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoofBody" unique_id=1638550425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+mesh = SubResource("CylinderMesh_roof")
+surface_material_override/0 = SubResource("StandardMaterial3D_roof")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoofBody" unique_id=530717883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+shape = SubResource("BoxShape3D_roof")
+
+[node name="Platform" type="StaticBody3D" parent="." unique_id=679099737]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform" unique_id=1905321532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.9, 0)
+mesh = SubResource("CylinderMesh_platform")
+surface_material_override/0 = SubResource("StandardMaterial3D_stone")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform" unique_id=821666485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.9, 0)
+shape = SubResource("CylinderShape3D_platform")
+
+[node name="Staircase" type="Node3D" parent="." unique_id=2073531826]
+script = ExtResource("1")
+tread_material = SubResource("StandardMaterial3D_tread")
+
+[node name="Door" type="StaticBody3D" parent="." unique_id=704652666]
+transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, -0.8, 0, -4)
+
+[node name="Leaf" type="MeshInstance3D" parent="Door" unique_id=44534906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.2, 0)
+mesh = SubResource("BoxMesh_doorleaf")
+surface_material_override/0 = SubResource("StandardMaterial3D_tread")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1062688628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.2, 0)
+shape = SubResource("BoxShape3D_doorleaf")

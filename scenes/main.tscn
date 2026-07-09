@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cdmbl70lyxdcs"]
+
+[ext_resource type="PackedScene" uid="uid://bok88ma0f660m" path="res://scenes/player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/village.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/forest.tscn" id="3"]
+[ext_resource type="AudioStream" uid="uid://bwybq4ywb4pie" path="res://sounds/music.mp3" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bh235gefmgs3h" path="res://scenes/tower.tscn" id="5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(80, 1, 80)
+
+[node name="Main" type="Node3D" unique_id=1019365768]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2052804074]
+transform = Transform3D(0.8, -0.4, 0.4, 0, 0.8, 0.6, -0.5, -0.5, 0.7, 0, 10, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1339592568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1823473514]
+mesh = SubResource("BoxMesh_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1547546486]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Player" parent="." unique_id=534464479 instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Village" parent="." unique_id=1669860054 instance=ExtResource("2")]
+
+[node name="Forest" parent="." unique_id=1685959155 instance=ExtResource("3")]
+
+[node name="Tower" parent="." unique_id=1104562177 instance=ExtResource("5")]
+transform = Transform3D(0.9939135, 0, -0.110164344, 0, 1, 0, 0.110164344, 0, 0.9939135, -1.575, 0, 10.207)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=304437154]
+stream = ExtResource("4_jyhfs")
+autoplay = true
