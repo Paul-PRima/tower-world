@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bhf7ndxel2u5t"]
+
+[ext_resource type="PackedScene" uid="uid://spgb1arbp523" path="res://scenes/entity.tscn" id="1"]
+[ext_resource type="AudioStream" uid="uid://8td73fvkmw3c" path="res://scripts/Bossfight - Nock Em.mp3" id="2_cajpo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.12, 0.1, 0.11, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(20, 1, 20)
+
+[node name="BossFloor" type="Node3D" unique_id=1595359197]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 59.124542, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1106713152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=695873485]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2066825588]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light1" type="OmniLight3D" parent="." unique_id=1490326941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -36, 0)
+light_color = Color(0.9, 0.7, 0.6, 1)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light2" type="OmniLight3D" parent="." unique_id=1128905647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -36, -8)
+light_color = Color(1, 0.4, 0.35, 1)
+light_energy = 1.4
+omni_range = 15.0
+
+[node name="Entity" parent="." unique_id=2037916292 instance=ExtResource("1")]
+transform = Transform3D(-0.9787315, 0, -0.2051454, 0, 1, 0, 0.2051454, 0, -0.9787315, 0, -39.844967, -6)
+
+[node name="BossMusic" type="AudioStreamPlayer3D" parent="." unique_id=303266630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -39, 0)
+stream = ExtResource("2_cajpo")
+unit_size = 8.0
+autoplay = true
+max_distance = 60.0

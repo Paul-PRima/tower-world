@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://cocaybu6dwawk" path="res://sounds/jump.mp3" id="2_g2els"]
 [ext_resource type="AudioStream" uid="uid://8sigr702pqh" path="res://sounds/footstep.mp3" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://c6tch4mybanig" path="res://sounds/yodguard-horse-gallop-sound-4-450277.mp3" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://bncrj6hbgcpeq" path="res://scripts/hud.gd" id="5"]
+[ext_resource type="AudioStream" uid="uid://b8fl362jaonlb" path="res://scripts/dragon-studio-violent-sword-slice-2-393841.mp3" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
 radius = 0.4
@@ -12,7 +12,24 @@ height = 1.8
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dqkch"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1355351221]
+[sub_resource type="BoxMesh" id="BoxMesh_blade"]
+size = Vector3(0.06, 0.7, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blade"]
+albedo_color = Color(0.75, 0.77, 0.8, 1)
+metallic = 0.8
+roughness = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_hilt"]
+size = Vector3(0.1, 0.16, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hilt"]
+albedo_color = Color(0.35, 0.22, 0.1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_swordhit"]
+radius = 0.45
+
+[node name="Player" type="CharacterBody3D" unique_id=1355351221 groups=["player"]]
 script = ExtResource("1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=929261839]
@@ -25,6 +42,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 attributes = SubResource("CameraAttributesPractical_dqkch")
 current = true
 
+[node name="Sword" type="Node3D" parent="Head/Camera3D" unique_id=1497552563]
+transform = Transform3D(0.95905554, -0.22576076, -0.17101006, 0.25488698, 0.9512512, 0.17364818, 0.12347059, -0.21012649, 0.96984625, 0.35, -0.3, -0.6)
+visible = false
+
+[node name="Blade" type="MeshInstance3D" parent="Head/Camera3D/Sword" unique_id=451115019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("BoxMesh_blade")
+surface_material_override/0 = SubResource("StandardMaterial3D_blade")
+
+[node name="Hilt" type="MeshInstance3D" parent="Head/Camera3D/Sword" unique_id=972978438]
+mesh = SubResource("BoxMesh_hilt")
+surface_material_override/0 = SubResource("StandardMaterial3D_hilt")
+
+[node name="SwordHitbox" type="Area3D" parent="Head/Camera3D/Sword" unique_id=431364621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Sword/SwordHitbox" unique_id=2106117408]
+shape = SubResource("SphereShape3D_swordhit")
+
 [node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1381149810]
 stream = ExtResource("2_qhqgy")
 
@@ -35,9 +71,11 @@ stream = ExtResource("2_g2els")
 stream = ExtResource("4_dqkch")
 volume_db = 40.0
 
+[node name="SwordSwingSound" type="AudioStreamPlayer3D" parent="." unique_id=43049739]
+stream = ExtResource("5_qlg0r")
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1113007749]
 process_priority = 1
-script = ExtResource("5")
 
 [node name="Crosshair" type="Control" parent="HUD" unique_id=569236706]
 layout_mode = 3
@@ -67,40 +105,3 @@ offset_right = 1.0
 offset_bottom = 8.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.85)
-
-[node name="WellDoneScreen" type="Control" parent="HUD" unique_id=1295860559]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Background" type="ColorRect" parent="HUD/WellDoneScreen" unique_id=478312750]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.7)
-
-[node name="Label" type="Label" parent="HUD/WellDoneScreen" unique_id=1880326841]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
-theme_override_font_sizes/font_size = 48
-text = "Well Done!
-You collected all 4 items.
-
-(Esc to dismiss)"
-horizontal_alignment = 1
-vertical_alignment = 1

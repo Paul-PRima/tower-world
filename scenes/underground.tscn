@@ -20,9 +20,9 @@ bottom_radius = 1.5
 height = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pad"]
-albedo_color = Color(0.2, 0.8, 0.9, 1)
+albedo_color = Color(0.9, 0.25, 0.2, 1)
 emission_enabled = true
-emission = Color(0.2, 0.8, 0.9, 1)
+emission = Color(0.9, 0.25, 0.2, 1)
 emission_energy_multiplier = 0.8
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pad"]
@@ -64,17 +64,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -15, -15)
 light_energy = 1.3
 omni_range = 35.0
 
-[node name="ReturnPad" type="Area3D" parent="."]
+[node name="DescendPad" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19, 0)
 script = ExtResource("1")
-target_y = 1.0
+target_y = -39.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ReturnPad"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DescendPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 mesh = SubResource("CylinderMesh_pad")
 surface_material_override/0 = SubResource("StandardMaterial3D_pad")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ReturnPad"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DescendPad"]
 shape = SubResource("CylinderShape3D_pad")
 
 [node name="ChallengeA" type="Node3D" parent="."]

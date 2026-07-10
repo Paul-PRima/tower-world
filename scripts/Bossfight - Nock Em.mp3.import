@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8td73fvkmw3c"
+path="res://.godot/imported/Bossfight - Nock Em.mp3-969a280fded7936c6d5d6e92a3ce4c4f.mp3str"
+
+[deps]
+
+source_file="res://scripts/Bossfight - Nock Em.mp3"
+dest_files=["res://.godot/imported/Bossfight - Nock Em.mp3-969a280fded7936c6d5d6e92a3ce4c4f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

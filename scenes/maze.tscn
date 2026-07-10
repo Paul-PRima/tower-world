@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/maze_generator.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/cobweb.tscn" id="2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(26, 1, 26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.22, 0.2, 0.17, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(26, 1, 26)
+
+[node name="Maze" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -57, -9)
+light_energy = 1.2
+omni_range = 20.0
+
+[node name="Light2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -57, -9)
+light_energy = 1.2
+omni_range = 20.0
+
+[node name="Light3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -57, 9)
+light_energy = 1.2
+omni_range = 20.0
+
+[node name="Light4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -57, 9)
+light_energy = 1.2
+omni_range = 20.0
+
+[node name="MazeGenerator" type="Node3D" parent="."]
+script = ExtResource("1")
+cobweb_scene = ExtResource("2")

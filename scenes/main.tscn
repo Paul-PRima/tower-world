@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://bwybq4ywb4pie" path="res://sounds/music.mp3" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bh235gefmgs3h" path="res://scenes/tower.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/underground.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bhf7ndxel2u5t" path="res://scenes/boss_floor.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/maze.tscn" id="8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
 size = Vector3(100, 1, 100)
@@ -16,8 +18,12 @@ size = Vector3(100, 1, 100)
 [node name="Main" type="Node3D" unique_id=1019365768]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2052804074]
-transform = Transform3D(0.8, -0.4, 0.4, 0, 0.8, 0.6, -0.5, -0.5, 0.7, 0, 10, 0)
+transform = Transform3D(0.8479983, -0.32982093, 0.41486993, 0, 0.782775, 0.6223049, -0.52999896, -0.5277135, 0.66379184, 40.263165, 10, 63.74231)
+light_color = Color(1, 1, 0.8745098, 1)
+light_energy = 1.426
 shadow_enabled = true
+shadow_transmittance_bias = 16.0
+shadow_blur = 10.0
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1339592568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -29,7 +35,7 @@ mesh = SubResource("BoxMesh_floor")
 shape = SubResource("BoxShape3D_floor")
 
 [node name="Player" parent="." unique_id=534464479 instance=ExtResource("1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.98505, 0)
 
 [node name="Village" parent="." unique_id=1669860054 instance=ExtResource("2")]
 
@@ -50,6 +56,11 @@ transform = Transform3D(-0.5536066, 0, -0.83277833, 0, 1, 0, 0.83277833, 0, -0.5
 transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 17, 0, -17)
 
 [node name="Underground" parent="." unique_id=1511897283 instance=ExtResource("6")]
+
+[node name="BossFloor" parent="." unique_id=1312626636 instance=ExtResource("7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0064888, 0.008304596, -0.025557041)
+
+[node name="Maze" parent="." unique_id=108302876 instance=ExtResource("8")]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=304437154]
 stream = ExtResource("4_jyhfs")
