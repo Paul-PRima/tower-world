@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stone"]
+albedo_color = Color(0.55, 0.55, 0.58, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ns"]
+size = Vector3(34, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ns"]
+size = Vector3(34, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ew"]
+size = Vector3(1, 4, 34)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew"]
+size = Vector3(1, 4, 34)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gate"]
+size = Vector3(15, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gate"]
+size = Vector3(15, 4, 1)
+
+[node name="VillageWall" type="Node3D"]
+
+[node name="NorthWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 17)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NorthWall"]
+mesh = SubResource("BoxMesh_ns")
+surface_material_override/0 = SubResource("StandardMaterial3D_stone")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthWall"]
+shape = SubResource("BoxShape3D_ns")
+
+[node name="EastWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EastWall"]
+mesh = SubResource("BoxMesh_ew")
+surface_material_override/0 = SubResource("StandardMaterial3D_stone")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EastWall"]
+shape = SubResource("BoxShape3D_ew")
+
+[node name="WestWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WestWall"]
+mesh = SubResource("BoxMesh_ew")
+surface_material_override/0 = SubResource("StandardMaterial3D_stone")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WestWall"]
+shape = SubResource("BoxShape3D_ew")
+
+[node name="SouthWallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2, -17)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SouthWallWest"]
+mesh = SubResource("BoxMesh_gate")
+surface_material_override/0 = SubResource("StandardMaterial3D_stone")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWallWest"]
+shape = SubResource("BoxShape3D_gate")
+
+[node name="SouthWallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 2, -17)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SouthWallEast"]
+mesh = SubResource("BoxMesh_gate")
+surface_material_override/0 = SubResource("StandardMaterial3D_stone")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWallEast"]
+shape = SubResource("BoxShape3D_gate")

@@ -63,3 +63,11 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## 5. Changelog Maintenance
+
+Whenever changes are made to this project — by Claude or detected as a manual user edit (e.g. via a system-reminder about a file changing outside Claude's own tool calls) — update `CHANGELOG.md`:
+- Add a one-line entry under today's date (create a new date heading if one doesn't exist yet), categorized as Added / Changed / Fixed / Removed.
+- Tag each entry `(Claude)` or `(User)` depending on who made it.
+- Keep entries terse: what changed, and why if it's not obvious.
+- Do this at the end of a turn once changes are settled, not mid-edit.

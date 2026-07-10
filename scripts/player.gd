@@ -1,15 +1,18 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPRINT_SPEED = 8.0
+const JUMP_VELOCITY = 5
 const MOUSE_SENSITIVITY = 0.002
 const FOOTSTEP_INTERVAL = 0.4
+const SPRINT_FOOTSTEP_INTERVAL = 0.28
 const STEP_HEIGHT = 0.3
 const STEP_CHECK_DISTANCE = 0.5
 const FOOT_OFFSET = 0.15
 
 @onready var head: Node3D = $Head
 @onready var footstep_player: AudioStreamPlayer3D = $FootstepPlayer
+@onready var sprint_footstep_player: AudioStreamPlayer3D = $SprintFootstepPlayer
 @onready var jump_player: AudioStreamPlayer3D = $JumpPlayer
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -35,21 +38,25 @@ func _physics_process(delta: float) -> void:
 		if jump_player.stream:
 			jump_player.play()
 
+	var is_sprinting := Input.is_action_pressed("sprint")
+	var speed := SPRINT_SPEED if is_sprinting else SPEED
+
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 
 	if is_on_floor() and direction:
 		footstep_timer -= delta
 		if footstep_timer <= 0.0:
-			footstep_timer = FOOTSTEP_INTERVAL
-			if footstep_player.stream:
-				footstep_player.play()
+			footstep_timer = SPRINT_FOOTSTEP_INTERVAL if is_sprinting else FOOTSTEP_INTERVAL
+			var step_player := sprint_footstep_player if is_sprinting else footstep_player
+			if step_player.stream:
+				step_player.play()
 	else:
 		footstep_timer = 0.0
 

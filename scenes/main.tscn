@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" path="res://scenes/forest.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://bwybq4ywb4pie" path="res://sounds/music.mp3" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bh235gefmgs3h" path="res://scenes/tower.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/underground.tscn" id="6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
-size = Vector3(80, 1, 80)
+size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
-size = Vector3(80, 1, 80)
+size = Vector3(100, 1, 100)
 
 [node name="Main" type="Node3D" unique_id=1019365768]
 
@@ -33,10 +34,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Village" parent="." unique_id=1669860054 instance=ExtResource("2")]
 
 [node name="Forest" parent="." unique_id=1685959155 instance=ExtResource("3")]
+inner_radius = 26.0
+outer_radius = 45.0
 
-[node name="Tower" parent="." unique_id=1104562177 instance=ExtResource("5")]
-transform = Transform3D(0.9939135, 0, -0.110164344, 0, 1, 0, 0.110164344, 0, 0.9939135, -1.575, 0, 10.207)
+[node name="TowerA" parent="." unique_id=461891004 instance=ExtResource("5")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 17, 0, 17)
+
+[node name="TowerB" parent="." unique_id=789618454 instance=ExtResource("5")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -17, 0, 17)
+
+[node name="TowerC" parent="." unique_id=1492556613 instance=ExtResource("5")]
+transform = Transform3D(-0.5536066, 0, -0.83277833, 0, 1, 0, 0.83277833, 0, -0.5536066, -19, 0, -17)
+
+[node name="TowerC2" parent="." unique_id=681954891 instance=ExtResource("5")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 17, 0, -17)
+
+[node name="Underground" parent="." unique_id=1511897283 instance=ExtResource("6")]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=304437154]
 stream = ExtResource("4_jyhfs")
+volume_db = 3.554
 autoplay = true

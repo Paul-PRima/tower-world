@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bh235gefmgs3h"]
 
 [ext_resource type="Script" uid="uid://ddyjl8l0j1qo5" path="res://scripts/spiral_stairs.gd" id="1"]
+[ext_resource type="Script" uid="uid://dd1m8pugy51pb" path="res://scripts/vertical_teleporter.gd" id="2"]
+[ext_resource type="Script" uid="uid://d0lqfep5cs12" path="res://scripts/door.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://ct1y5o12alkgi" path="res://sounds/universfield-creaking-door-03-487855.mp3" id="3_qrbg1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stone"]
 albedo_color = Color(0.55, 0.55, 0.58, 1)
@@ -28,11 +31,18 @@ radius = 3.6
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tread"]
 albedo_color = Color(0.4, 0.25, 0.12, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_doorleaf"]
+size = Vector3(1.5, 2.4, 0.08)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 2.2
+
 [sub_resource type="BoxMesh" id="BoxMesh_doorleaf"]
 size = Vector3(1.5, 2.4, 0.08)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_doorleaf"]
-size = Vector3(1.5, 2.4, 0.08)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_trigger"]
+height = 1.0
+radius = 3.4
 
 [node name="Tower" type="Node3D" unique_id=681954891]
 
@@ -97,13 +107,32 @@ script = ExtResource("1")
 tread_material = SubResource("StandardMaterial3D_tread")
 
 [node name="Door" type="StaticBody3D" parent="." unique_id=704652666]
-transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, -0.8, 0, -4)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -0.8, 0, -4)
+script = ExtResource("3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1062688628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.2, 0)
+shape = SubResource("BoxShape3D_doorleaf")
+
+[node name="InteractArea" type="Area3D" parent="Door" unique_id=1323798333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/InteractArea" unique_id=1273894180]
+shape = SubResource("SphereShape3D_interact")
+
+[node name="InteractSound" type="AudioStreamPlayer3D" parent="Door" unique_id=1018403840]
+stream = ExtResource("3_qrbg1")
 
 [node name="Leaf" type="MeshInstance3D" parent="Door" unique_id=44534906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.2, 0)
 mesh = SubResource("BoxMesh_doorleaf")
 surface_material_override/0 = SubResource("StandardMaterial3D_tread")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1062688628]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.2, 0)
-shape = SubResource("BoxShape3D_doorleaf")
+[node name="TopTrigger" type="Area3D" parent="." unique_id=1893045184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+script = ExtResource("2")
+target_y = -19.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopTrigger" unique_id=565310833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5388632, 0)
+shape = SubResource("CylinderShape3D_trigger")

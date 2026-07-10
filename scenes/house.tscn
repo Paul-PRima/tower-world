@@ -1,4 +1,7 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene format=3 uid="uid://uorfi4s3b00q"]
+
+[ext_resource type="Script" uid="uid://d0lqfep5cs12" path="res://scripts/door.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://ct1y5o12alkgi" path="res://sounds/universfield-creaking-door-03-487855.mp3" id="2_qtlar"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_walls"]
 albedo_color = Color(0.85, 0.78, 0.65, 1)
@@ -12,11 +15,11 @@ albedo_color = Color(0.55, 0.27, 0.2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_roof"]
 size = Vector3(4.4, 1.6, 4.4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
-albedo_color = Color(0.4, 0.25, 0.12, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(0.9, 0.5, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.4, 0.25, 0.12, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_table"]
 size = Vector3(0.9, 0.5, 0.6)
@@ -33,72 +36,103 @@ size = Vector3(0.4, 0.4, 0.4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_chair"]
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="House" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_doorleaf"]
+size = Vector3(1, 2.1, 0.08)
 
-[node name="WallsCSG" type="CSGBox3D" parent="."]
+[sub_resource type="BoxShape3D" id="BoxShape3D_doorleaf"]
+size = Vector3(1, 2.1, 0.08)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 1.8
+
+[node name="House" type="Node3D" unique_id=1497205381]
+
+[node name="WallsCSG" type="CSGBox3D" parent="." unique_id=637800270]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 use_collision = true
 size = Vector3(4, 3, 4)
 material = SubResource("StandardMaterial3D_walls")
 
-[node name="Inner" type="CSGBox3D" parent="WallsCSG"]
+[node name="Inner" type="CSGBox3D" parent="WallsCSG" unique_id=2003729290]
 operation = 2
 size = Vector3(3.4, 2.4, 3.4)
 
-[node name="DoorCut" type="CSGBox3D" parent="WallsCSG"]
+[node name="DoorCut" type="CSGBox3D" parent="WallsCSG" unique_id=830275195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -1.85)
 operation = 2
 size = Vector3(1.2, 2.2, 0.5)
 
-[node name="WindowCutLeft" type="CSGBox3D" parent="WallsCSG"]
+[node name="WindowCutLeft" type="CSGBox3D" parent="WallsCSG" unique_id=1065688988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85, 0.1, 0)
 operation = 2
 size = Vector3(0.5, 0.9, 0.9)
 
-[node name="WindowCutRight" type="CSGBox3D" parent="WallsCSG"]
+[node name="WindowCutRight" type="CSGBox3D" parent="WallsCSG" unique_id=1523883988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 0.1, 0)
 operation = 2
 size = Vector3(0.5, 0.9, 0.9)
 
-[node name="RoofBody" type="StaticBody3D" parent="."]
+[node name="RoofBody" type="StaticBody3D" parent="." unique_id=237635190]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RoofBody"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoofBody" unique_id=539548879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, 0)
 mesh = SubResource("PrismMesh_roof")
 surface_material_override/0 = SubResource("StandardMaterial3D_roof")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoofBody"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoofBody" unique_id=568405226]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, 0)
 shape = SubResource("BoxShape3D_roof")
 
-[node name="Furniture" type="Node3D" parent="."]
+[node name="Furniture" type="Node3D" parent="." unique_id=600672365]
 
-[node name="Table" type="StaticBody3D" parent="Furniture"]
+[node name="Table" type="StaticBody3D" parent="Furniture" unique_id=1093719980]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.55, 0.9)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Furniture/Table"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Furniture/Table" unique_id=811983948]
 mesh = SubResource("BoxMesh_table")
 surface_material_override/0 = SubResource("StandardMaterial3D_wood")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Table"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Table" unique_id=218274113]
 shape = SubResource("BoxShape3D_table")
 
-[node name="Bed" type="StaticBody3D" parent="Furniture"]
+[node name="Bed" type="StaticBody3D" parent="Furniture" unique_id=350586066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.5, 1.2)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Furniture/Bed"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Furniture/Bed" unique_id=575542457]
 mesh = SubResource("BoxMesh_bed")
 surface_material_override/0 = SubResource("StandardMaterial3D_wood")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Bed"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Bed" unique_id=851952845]
 shape = SubResource("BoxShape3D_bed")
 
-[node name="Chair" type="StaticBody3D" parent="Furniture"]
+[node name="Chair" type="StaticBody3D" parent="Furniture" unique_id=670758739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.5, 0.3)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Furniture/Chair"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Furniture/Chair" unique_id=1757441317]
 mesh = SubResource("BoxMesh_chair")
 surface_material_override/0 = SubResource("StandardMaterial3D_wood")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Chair"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Chair" unique_id=117025026]
 shape = SubResource("BoxShape3D_chair")
+
+[node name="Door" type="StaticBody3D" parent="." unique_id=1985359196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -1.85)
+script = ExtResource("1")
+
+[node name="Leaf" type="MeshInstance3D" parent="Door" unique_id=323146626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.05, 0)
+mesh = SubResource("BoxMesh_doorleaf")
+surface_material_override/0 = SubResource("StandardMaterial3D_wood")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1617112415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.05, 0)
+shape = SubResource("BoxShape3D_doorleaf")
+
+[node name="InteractArea" type="Area3D" parent="Door" unique_id=664863331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/InteractArea" unique_id=29730989]
+shape = SubResource("SphereShape3D_interact")
+
+[node name="InteractSound" type="AudioStreamPlayer3D" parent="Door" unique_id=649753946]
+stream = ExtResource("2_qtlar")
