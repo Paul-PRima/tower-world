@@ -24,8 +24,8 @@ grow_vertical = 2
 script = ExtResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1486686079]
-position = Vector2(574, 322)
-scale = Vector2(1.5555556, 1.5555556)
+position = Vector2(1281, 748)
+scale = Vector2(3.4715447, 3.6135268)
 sprite_frames = SubResource("SpriteFrames_2cjux")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1856376377]
