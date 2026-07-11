@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(\"/c/Users/paul/Downloads/Godot_v4.7-stable_win64.exe/Godot_v4.7-stable_win64_console.exe\" --headless --quit-after 10 \"res://scenes/ending_screen.tscn\" --path \"c:\\\\Users\\\\paul\\\\Desktop\\\\tower world\")",
-      "Bash(\"/c/Users/paul/Downloads/Godot_v4.7-stable_win64.exe/Godot_v4.7-stable_win64_console.exe\" --headless --quit-after 30 \"res://scenes/main.tscn\" --path \"c:\\\\Users\\\\paul\\\\Desktop\\\\tower world\")"
-    ]
-  }
-}
