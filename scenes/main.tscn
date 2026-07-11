@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" path="res://scenes/underground.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bhf7ndxel2u5t" path="res://scenes/boss_floor.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://scenes/maze.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/manor.tscn" id="9"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/town.tscn" id="11"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
 size = Vector3(100, 1, 100)
@@ -16,6 +19,7 @@ size = Vector3(100, 1, 100)
 size = Vector3(100, 1, 100)
 
 [node name="Main" type="Node3D" unique_id=1019365768]
+script = ExtResource("10")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2052804074]
 transform = Transform3D(0.8479983, -0.32982093, 0.41486993, 0, 0.782775, 0.6223049, -0.52999896, -0.5277135, 0.66379184, 40.263165, 10, 63.74231)
@@ -35,7 +39,7 @@ mesh = SubResource("BoxMesh_floor")
 shape = SubResource("BoxShape3D_floor")
 
 [node name="Player" parent="." unique_id=534464479 instance=ExtResource("1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.98505, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.269825, 0)
 
 [node name="Village" parent="." unique_id=1669860054 instance=ExtResource("2")]
 
@@ -62,7 +66,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0064888, 0.008304596, -0.0
 
 [node name="Maze" parent="." unique_id=108302876 instance=ExtResource("8")]
 
+[node name="Manor" parent="." unique_id=974530239 instance=ExtResource("9")]
+
+[node name="Town" parent="." instance=ExtResource("11")]
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=304437154]
 stream = ExtResource("4_jyhfs")
 volume_db = 3.554
 autoplay = true
+parameters/looping = true

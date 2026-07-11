@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://btsnmtrktklod"]
 
-[ext_resource type="Script" path="res://scripts/item.gd" id="1"]
+[ext_resource type="Script" uid="uid://dbpxjkkvdblg4" path="res://scripts/item.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dpvhol5311510" path="res://sounds/ribhavagrawal-coin-recieved-230517.mp3" id="2_s8enn"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_gem"]
 radius = 0.4
@@ -15,14 +16,15 @@ emission_energy_multiplier = 1.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_gem"]
 radius = 0.6
 
-[node name="Item" type="Area3D"]
+[node name="Item" type="Area3D" unique_id=1113657581]
 script = ExtResource("1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1498072849]
 mesh = SubResource("SphereMesh_gem")
 surface_material_override/0 = SubResource("StandardMaterial3D_gem")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1576078173]
 shape = SubResource("SphereShape3D_gem")
 
-[node name="PickupSound" type="AudioStreamPlayer3D" parent="."]
+[node name="PickupSound" type="AudioStreamPlayer3D" parent="." unique_id=1327788190]
+stream = ExtResource("2_s8enn")

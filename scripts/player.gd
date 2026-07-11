@@ -10,6 +10,7 @@ const STEP_HEIGHT = 0.3
 const STEP_CHECK_DISTANCE = 0.5
 const FOOT_OFFSET = 0.15
 const SWING_TIME = 0.25
+const TOWN_ENTRANCE := Vector3(0, -99, 14)
 
 @onready var head: Node3D = $Head
 @onready var footstep_player: AudioStreamPlayer3D = $FootstepPlayer
@@ -18,6 +19,7 @@ const SWING_TIME = 0.25
 @onready var sword: Node3D = $Head/Camera3D/Sword
 @onready var sword_hitbox: Area3D = $Head/Camera3D/Sword/SwordHitbox
 @onready var sword_swing_sound: AudioStreamPlayer3D = $SwordSwingSound
+@onready var death_sound: AudioStreamPlayer3D = $DeathSound
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var footstep_timer := 0.1
@@ -27,18 +29,27 @@ var swinging := false
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GameState.all_items_collected.connect(_on_all_items_collected)
+	GameState.all_manor_trees_launched.connect(_on_all_manor_trees_launched)
 
 func _on_all_items_collected() -> void:
+	grant_sword()
+
+func _on_all_manor_trees_launched() -> void:
+	global_position = TOWN_ENTRANCE
+
+func grant_sword() -> void:
 	has_sword = true
 	sword.visible = true
+
+func play_death_sound() -> void:
+	if death_sound.stream:
+		death_sound.play()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		head.rotation.x = clamp(head.rotation.x, -PI / 2, PI / 2)
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if has_sword and not swinging and event.is_action_pressed("attack"):
 		_swing_sword()
 

@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/house_generator.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/key.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/locked_door.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/forest.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/tree.tscn" id="5"]
+[ext_resource type="Script" path="res://scripts/teleporter.gd" id="6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_extfloor"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_extfloor"]
+albedo_color = Color(0.16, 0.22, 0.14, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_extfloor"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_deathzone"]
+size = Vector3(120, 10, 120)
+
+[node name="Manor" type="Node3D"]
+
+[node name="ExteriorFloor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -80.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ExteriorFloor"]
+mesh = SubResource("BoxMesh_extfloor")
+surface_material_override/0 = SubResource("StandardMaterial3D_extfloor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExteriorFloor"]
+shape = SubResource("BoxShape3D_extfloor")
+
+[node name="ExteriorLight1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -74, 15)
+light_energy = 1.1
+omni_range = 22.0
+
+[node name="ExteriorLight2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -74, 15)
+light_energy = 1.1
+omni_range = 22.0
+
+[node name="ExteriorLight3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -74, -15)
+light_energy = 1.1
+omni_range = 22.0
+
+[node name="ExteriorLight4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -74, -15)
+light_energy = 1.1
+omni_range = 22.0
+
+[node name="DeathZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -90, 0)
+script = ExtResource("6")
+target_position = Vector3(-5, -79, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
+shape = SubResource("BoxShape3D_deathzone")
+
+[node name="ManorForest" parent="." instance=ExtResource("4")]
+tree_scene = ExtResource("5")
+tree_count = 12
+inner_radius = 12.0
+outer_radius = 22.0
+random_seed = 2
+center = Vector3(0, -80, 0)
+assign_tree_ids = true
+
+[node name="HouseGenerator" type="Node3D" parent="."]
+script = ExtResource("1")
+key_scene = ExtResource("2")
+locked_door_scene = ExtResource("3")
+
+[node name="LightRoomA" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -77.8, 0)
+light_energy = 1.2
+omni_range = 8.0
+
+[node name="LightRoomB" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -77.8, 0)
+light_energy = 1.2
+omni_range = 8.0
+
+[node name="LightRoomC" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65, -77.8, 0)
+light_energy = 1.2
+omni_range = 8.0
+
+[node name="LightRoomD" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75, -3.5)
+light_energy = 1.2
+omni_range = 8.0
+
+[node name="LightRoomE" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75, 0)
+light_energy = 1.2
+omni_range = 8.0
+
+[node name="LightRoomF" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75, 3.5)
+light_energy = 1.2
+omni_range = 8.0

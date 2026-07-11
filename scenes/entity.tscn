@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://spgb1arbp523"]
 
 [ext_resource type="Script" uid="uid://c3k1kb22f2o4v" path="res://scripts/entity.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://p61ehr1owdni" path="res://scripts/freesound_community-oof-97698.mp3" id="2_gr72c"]
+[ext_resource type="AudioStream" uid="uid://p61ehr1owdni" path="res://sounds/freesound_community-oof-97698.mp3" id="2_gr72c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_body"]
 radius = 0.35
@@ -88,3 +88,4 @@ autostart = true
 
 [node name="HitSound" type="AudioStreamPlayer3D" parent="." unique_id=256753056]
 stream = ExtResource("2_gr72c")
+volume_db = 80.0

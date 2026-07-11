@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bhf7ndxel2u5t"]
 
 [ext_resource type="PackedScene" uid="uid://spgb1arbp523" path="res://scenes/entity.tscn" id="1"]
-[ext_resource type="AudioStream" uid="uid://8td73fvkmw3c" path="res://scripts/Bossfight - Nock Em.mp3" id="2_cajpo"]
+[ext_resource type="AudioStream" uid="uid://8td73fvkmw3c" path="res://sounds/Bossfight - Nock Em.mp3" id="2_cajpo"]
+[ext_resource type="Script" uid="uid://v4gdhkrfex1d" path="res://scripts/teleporter.gd" id="3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
 size = Vector3(20, 1, 20)
@@ -11,6 +12,9 @@ albedo_color = Color(0.12, 0.1, 0.11, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
 size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_deathzone"]
+size = Vector3(80, 10, 80)
 
 [node name="BossFloor" type="Node3D" unique_id=1595359197]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 59.124542, 0)
@@ -46,3 +50,12 @@ stream = ExtResource("2_cajpo")
 unit_size = 8.0
 autoplay = true
 max_distance = 60.0
+parameters/looping = true
+
+[node name="DeathZone" type="Area3D" parent="." unique_id=657627280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+script = ExtResource("3")
+target_position = Vector3(0, -39, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=119306394]
+shape = SubResource("BoxShape3D_deathzone")

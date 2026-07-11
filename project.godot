@@ -14,10 +14,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Tower World"
-run/main_scene="res://scenes/main.tscn"
+config/name="Joke game.exe"
+config/version="0.3"
+run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/image="uid://bkw8n4w8q6d5s"
+config/icon="uid://bkw8n4w8q6d5s"
 
 [autoload]
 

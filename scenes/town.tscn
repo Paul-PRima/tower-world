@@ -1,0 +1,594 @@
+[gd_scene format=3 uid="uid://bd7m07amgkli4"]
+
+[ext_resource type="PackedScene" path="res://scenes/big_tree.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://uorfi4s3b00q" path="res://scenes/house.tscn" id="2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.5, 0.47, 0.4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(40, 1, 40)
+
+[node name="Town" type="Node3D" unique_id=241755363]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=717177485]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -105, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=491218420]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1169488711]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light1" type="OmniLight3D" parent="." unique_id=485755733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light2" type="OmniLight3D" parent="." unique_id=2140883943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light3" type="OmniLight3D" parent="." unique_id=270746511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light4" type="OmniLight3D" parent="." unique_id=1304984281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight" type="OmniLight3D" parent="." unique_id=1929183878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -85, 0)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House1" parent="." unique_id=1145222892 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 9, -100, 9)
+
+[node name="House2" parent="." unique_id=1895806793 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -9, -100, 9)
+
+[node name="House3" parent="." unique_id=326860142 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, -9, -100, -9)
+
+[node name="House4" parent="." unique_id=479648741 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 9, -100, -9)
+
+[node name="Floor7" type="StaticBody3D" parent="." unique_id=2107582143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.814312, -100.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor7" unique_id=2085955377]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor7" unique_id=667834899]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light25" type="OmniLight3D" parent="." unique_id=1418775664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.185688, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light26" type="OmniLight3D" parent="." unique_id=506608575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.814312, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light27" type="OmniLight3D" parent="." unique_id=132618386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.185688, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light28" type="OmniLight3D" parent="." unique_id=1383199720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.814312, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight7" type="OmniLight3D" parent="." unique_id=1228525949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.814312, -85, 0)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House25" parent="." unique_id=1497205381 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 0.18568802, -100, 9)
+
+[node name="House26" parent="." unique_id=1535201614 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -17.814312, -100, 9)
+
+[node name="House27" parent="." unique_id=1373917948 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, -17.814312, -100, -9)
+
+[node name="House28" parent="." unique_id=1001660517 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 0.18568802, -100, -9)
+
+[node name="Floor8" type="StaticBody3D" parent="." unique_id=70892866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.070972, -100.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor8" unique_id=744599610]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor8" unique_id=1774714337]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light29" type="OmniLight3D" parent="." unique_id=350001563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.070972, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light30" type="OmniLight3D" parent="." unique_id=2020543021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.070972, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light31" type="OmniLight3D" parent="." unique_id=540119874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.070972, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light32" type="OmniLight3D" parent="." unique_id=2061495896]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.070972, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight8" type="OmniLight3D" parent="." unique_id=133161723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.070972, -85, 0)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House29" parent="." unique_id=966146515 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 35.070972, -100, 9)
+
+[node name="House30" parent="." unique_id=2019395486 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 17.070972, -100, 9)
+
+[node name="House31" parent="." unique_id=831971703 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 17.070972, -100, -9)
+
+[node name="House32" parent="." unique_id=1975912957 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 35.070972, -100, -9)
+
+[node name="Floor9" type="StaticBody3D" parent="." unique_id=1498727313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.070972, -100.5, -37.42096)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor9" unique_id=1674669929]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor9" unique_id=650287004]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light33" type="OmniLight3D" parent="." unique_id=680757485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.070972, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light34" type="OmniLight3D" parent="." unique_id=1851633659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.070972, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light35" type="OmniLight3D" parent="." unique_id=1579771092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.070972, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light36" type="OmniLight3D" parent="." unique_id=744639357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.070972, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight9" type="OmniLight3D" parent="." unique_id=2116491281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.070972, -85, -37.42096)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House33" parent="." unique_id=547883618 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 35.070972, -100, -28.42096)
+
+[node name="House34" parent="." unique_id=256076169 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 17.070972, -100, -28.42096)
+
+[node name="House35" parent="." unique_id=541579805 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 17.070972, -100, -46.42096)
+
+[node name="House36" parent="." unique_id=830931505 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 35.070972, -100, -46.42096)
+
+[node name="Floor10" type="StaticBody3D" parent="." unique_id=1626608066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.876038, -100.5, -37.42096)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor10" unique_id=1265276294]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor10" unique_id=1091621297]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light37" type="OmniLight3D" parent="." unique_id=1623068758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.876038, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light38" type="OmniLight3D" parent="." unique_id=1631871429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.876038, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light39" type="OmniLight3D" parent="." unique_id=1007821543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.876038, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light40" type="OmniLight3D" parent="." unique_id=180700684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.876038, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight10" type="OmniLight3D" parent="." unique_id=380375366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.876038, -85, -37.42096)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House37" parent="." unique_id=1290613768 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 43.876038, -100, -28.42096)
+
+[node name="House38" parent="." unique_id=1037389503 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 25.876038, -100, -28.42096)
+
+[node name="House39" parent="." unique_id=1212709755 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 25.876038, -100, -46.42096)
+
+[node name="House40" parent="." unique_id=1522865494 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 43.876038, -100, -46.42096)
+
+[node name="Floor11" type="StaticBody3D" parent="." unique_id=297870913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3401527, -100.5, -37.42096)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor11" unique_id=679203382]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor11" unique_id=1999224727]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light41" type="OmniLight3D" parent="." unique_id=2012285909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.659847, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light42" type="OmniLight3D" parent="." unique_id=369500343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.340153, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light43" type="OmniLight3D" parent="." unique_id=938806356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.659847, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light44" type="OmniLight3D" parent="." unique_id=589194182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.340153, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight11" type="OmniLight3D" parent="." unique_id=466426026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3401527, -85, -37.42096)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House41" parent="." unique_id=1166395076 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 6.6598473, -100, -28.42096)
+
+[node name="House42" parent="." unique_id=850492167 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -11.340153, -100, -28.42096)
+
+[node name="House43" parent="." unique_id=1424435757 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, -11.340153, -100, -46.42096)
+
+[node name="House44" parent="." unique_id=1772130039 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 6.6598473, -100, -46.42096)
+
+[node name="Floor12" type="StaticBody3D" parent="." unique_id=1979164081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.266743, -100.5, -37.42096)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor12" unique_id=793439629]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor12" unique_id=2135084081]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light45" type="OmniLight3D" parent="." unique_id=796317363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7332573, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light46" type="OmniLight3D" parent="." unique_id=1342781997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.266743, -90, -23.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light47" type="OmniLight3D" parent="." unique_id=2115969436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7332573, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light48" type="OmniLight3D" parent="." unique_id=2108788667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.266743, -90, -51.42096)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight12" type="OmniLight3D" parent="." unique_id=22896694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.266743, -85, -37.42096)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House45" parent="." unique_id=699915609 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, -3.2667427, -100, -28.42096)
+
+[node name="House46" parent="." unique_id=1573173168 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -21.266743, -100, -28.42096)
+
+[node name="House47" parent="." unique_id=1628828857 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, -21.266743, -100, -46.42096)
+
+[node name="House48" parent="." unique_id=1041928791 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, -3.2667427, -100, -46.42096)
+
+[node name="Floor2" type="StaticBody3D" parent="." unique_id=2074349490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.880135, -100.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2" unique_id=1911733112]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2" unique_id=474793229]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light5" type="OmniLight3D" parent="." unique_id=1414584357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.880135, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light6" type="OmniLight3D" parent="." unique_id=133609657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.880135, -90, 14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light7" type="OmniLight3D" parent="." unique_id=1464097353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.880135, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light8" type="OmniLight3D" parent="." unique_id=170482998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.880135, -90, -14)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight2" type="OmniLight3D" parent="." unique_id=1380957114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.880135, -85, 0)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House5" parent="." unique_id=1634771838 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 43.880135, -100, 9)
+
+[node name="House6" parent="." unique_id=1297739423 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 25.880135, -100, 9)
+
+[node name="House7" parent="." unique_id=720410412 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 25.880135, -100, -9)
+
+[node name="House8" parent="." unique_id=416233805 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 43.880135, -100, -9)
+
+[node name="Floor3" type="StaticBody3D" parent="." unique_id=1565306223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.880135, -100.5, 37.5975)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3" unique_id=39700984]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3" unique_id=1189197473]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light9" type="OmniLight3D" parent="." unique_id=1869715124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.880135, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light10" type="OmniLight3D" parent="." unique_id=1980198148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.880135, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light11" type="OmniLight3D" parent="." unique_id=1275420356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.880135, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light12" type="OmniLight3D" parent="." unique_id=2008782089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.880135, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight3" type="OmniLight3D" parent="." unique_id=1025937607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.880135, -85, 37.5975)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House9" parent="." unique_id=2009515341 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 43.880135, -100, 46.5975)
+
+[node name="House10" parent="." unique_id=1597274087 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 25.880135, -100, 46.5975)
+
+[node name="House11" parent="." unique_id=1931316344 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 25.880135, -100, 28.5975)
+
+[node name="House12" parent="." unique_id=1252447962 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 43.880135, -100, 28.5975)
+
+[node name="Floor4" type="StaticBody3D" parent="." unique_id=1099531187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5781326, -100.5, 37.5975)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor4" unique_id=162239469]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor4" unique_id=1931487695]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light13" type="OmniLight3D" parent="." unique_id=1554769381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.421867, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light14" type="OmniLight3D" parent="." unique_id=804178011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.578133, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light15" type="OmniLight3D" parent="." unique_id=2081033317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.421867, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light16" type="OmniLight3D" parent="." unique_id=1525818086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.578133, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight4" type="OmniLight3D" parent="." unique_id=2072925935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5781326, -85, 37.5975)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House13" parent="." unique_id=82568537 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 7.4218674, -100, 46.5975)
+
+[node name="House14" parent="." unique_id=476315055 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -10.578133, -100, 46.5975)
+
+[node name="House15" parent="." unique_id=1691023489 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, -10.578133, -100, 28.5975)
+
+[node name="House16" parent="." unique_id=740588152 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 7.4218674, -100, 28.5975)
+
+[node name="Floor5" type="StaticBody3D" parent="." unique_id=728118286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.88621, -100.5, 37.5975)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor5" unique_id=745547929]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor5" unique_id=1109882490]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light17" type="OmniLight3D" parent="." unique_id=17139821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.886208, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light18" type="OmniLight3D" parent="." unique_id=1730349538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8862095, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light19" type="OmniLight3D" parent="." unique_id=2080784846]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.886208, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light20" type="OmniLight3D" parent="." unique_id=716535715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8862095, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight5" type="OmniLight3D" parent="." unique_id=1787986822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.88621, -85, 37.5975)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House17" parent="." unique_id=610171912 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 33.886208, -100, 46.5975)
+
+[node name="House18" parent="." unique_id=1187529291 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 15.8862095, -100, 46.5975)
+
+[node name="House19" parent="." unique_id=220906058 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 15.8862095, -100, 28.5975)
+
+[node name="House20" parent="." unique_id=237821491 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, 33.886208, -100, 28.5975)
+
+[node name="Floor6" type="StaticBody3D" parent="." unique_id=1494598323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.529894, -100.5, 37.5975)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor6" unique_id=245090092]
+mesh = SubResource("BoxMesh_floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor6" unique_id=335794315]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="Light21" type="OmniLight3D" parent="." unique_id=1417171493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4701042, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light22" type="OmniLight3D" parent="." unique_id=1905430447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.529894, -90, 51.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light23" type="OmniLight3D" parent="." unique_id=1573475472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4701042, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="Light24" type="OmniLight3D" parent="." unique_id=80817388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.529894, -90, 23.5975)
+light_energy = 1.2
+omni_range = 25.0
+
+[node name="CenterLight6" type="OmniLight3D" parent="." unique_id=1295807079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.529894, -85, 37.5975)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 1.4
+omni_range = 30.0
+
+[node name="House21" parent="." unique_id=839040487 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, -2.5298958, -100, 46.5975)
+
+[node name="House22" parent="." unique_id=679726964 instance=ExtResource("2")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -20.529894, -100, 46.5975)
+
+[node name="House23" parent="." unique_id=268714067 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, -20.529894, -100, 28.5975)
+
+[node name="House24" parent="." unique_id=528351698 instance=ExtResource("2")]
+transform = Transform3D(-0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, -0.7071068, -2.5298958, -100, 28.5975)
+
+[node name="BigTree" parent="." unique_id=1873324298 instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
